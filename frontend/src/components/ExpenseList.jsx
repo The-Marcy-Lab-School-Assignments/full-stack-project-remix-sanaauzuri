@@ -1,17 +1,17 @@
-import TodoItem from './ExpenseItem';
+import ExpenseItem from './ExpenseItem';
 
-function TodoList({ todos, loadTodos }) {
+function ExpenseList({ expenses, loadExpenses }) {
   return (
-    <ul id="todo-list">
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.todo_id}
-          todo={todo}
-          loadTodos={loadTodos}
+    <ul id="expense-list">
+      {expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.expense_id}
+          expense={expense}
+          loadExpenses={loadExpenses}
         />
       ))}
     </ul>
   );
 }
 
-export default TodoList;
+export default ExpenseList;
