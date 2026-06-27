@@ -5,7 +5,7 @@ const SALT_ROUNDS = 8;
 
 const seed = async () => {
   // Drop tables in reverse dependency order (todos references users via FK)
-  await pool.query('DROP TABLE IF EXISTS todos');
+  await pool.query('DROP TABLE IF EXISTS expenses');
   await pool.query('DROP TABLE IF EXISTS users');
 
   await pool.query(`
@@ -17,39 +17,41 @@ const seed = async () => {
   `);
 
   await pool.query(`
-    CREATE TABLE todos (
-      todo_id     SERIAL PRIMARY KEY,
-      title       TEXT NOT NULL,
-      is_complete BOOLEAN NOT NULL DEFAULT FALSE,
+    CREATE TABLE expenses (
+      expense_id       SERIAL PRIMARY KEY,
+      description   TEXT NOT NULL,
+      amount        NUMERIC NOT NULL,
+      date          DATE NOT NULL,
+      is_reimbursed BOOLEAN NOT NULL DEFAULT FALSE,
       user_id     INT REFERENCES users(user_id) ON DELETE CASCADE
     )
   `);
 
   // Hash passwords in parallel — bcrypt is slow by design (CPU-bound hashing)
-  const [aliceHash, bobHash] = await Promise.all([
-    bcrypt.hash('password123', SALT_ROUNDS),
-    bcrypt.hash('password123', SALT_ROUNDS),
+  const [janeHash, maxHash] = await Promise.all([
+    bcrypt.hash('password111', SALT_ROUNDS),
+    bcrypt.hash('password222', SALT_ROUNDS),
   ]);
 
   // RETURNING captures inserted user_ids so we don't hardcode them
   const { rows: users } = await pool.query(`
     INSERT INTO users (username, password_hash) VALUES
-      ('alice', $1),
-      ('bob',   $2)
+      ('jane', $1),
+      ('max',   $2)
     RETURNING user_id, username
-  `, [aliceHash, bobHash]);
+  `, [janeHash, maxHash]);
 
-  const [alice, bob] = users;
+  const [jane, max] = users;
 
   await pool.query(`
-    INSERT INTO todos (title, is_complete, user_id) VALUES
-      ('Buy groceries',        FALSE, $1),
-      ('Walk the dog',         FALSE, $1),
-      ('Read a book',          TRUE,  $1),
-      ('Set up the database',  TRUE,  $2),
-      ('Build the API',        TRUE,  $2),
-      ('Build the frontend',   FALSE, $2)
-  `, [alice.user_id, bob.user_id]);
+    INSERT INTO expenses (description, amount, date, is_reimbursed, user_id) VALUES
+      ('Client lunch',               47.75,  '2026-06-01', TRUE,  $1),
+      ('Class supplies',             18.99,  '2026-06-03', FALSE, $1),
+      ('Uber to conference',         23.50,  '2026-06-07', FALSE, $1),
+      ('Hotel stay',                 189.00,  '2026-06-13', TRUE,  $2),
+      ('Parking at job site',        35.00,  '2026-06-14', FALSE, $2),
+      ('Printed contracts at FedEx', 14.99,  '2026-06-19', TRUE,  $2)
+  `, [jane.user_id, max.user_id]);
 
   return users;
 };
