@@ -6,7 +6,7 @@ require('dotenv').config();
 const logRoutes = require('./middleware/logRoutes');
 const checkAuthentication = require('./middleware/checkAuthentication');
 const authControllers = require('./controllers/authControllers');
-const todoControllers = require('./controllers/expenseControllers');
+const expenseControllers = require('./controllers/expenseControllers');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
