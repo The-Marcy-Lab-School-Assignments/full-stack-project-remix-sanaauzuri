@@ -1,7 +1,7 @@
 # Boomerang 
 > *Every expense returns.*
 
-Boomerang is an app for employees whose employer covers certain expenses. Instead of rummaging through notes, spreadsheets, or old receipts, users can log expenses, mark them as reimbursed or pending, and see a clear summary of what is pending vs. reimbursed. All in one app.
+Boomerang is an app for employees whose employer covers certain expenses. Instead of rummaging through notes, spreadsheets, or old receipts, users can log expenses, mark an expense as reimbursed or pending, and see a clear summary of what is pending vs. reimbursed. All in one app.
 
 *Boomerang is a full-stack app built with React, Express, and Postgres. Simulates session-based authentication, session rehydration, auth-dependent data fetching, and conditional rendering.*
 
@@ -32,10 +32,10 @@ password_hash TEXT NOT NULL
 expenses
 ─────────────────────────────
 expense_id     SERIAL PRIMARY KEY
-description       TEXT NOT NULL
-amount       NUMERIC NOT NULL
-date       DATE NOT NULL
-is_reimbursed BOOLEAN DEFAULT FALSE
+description    TEXT NOT NULL
+amount         NUMERIC NOT NULL
+date           DATE NOT NULL
+is_reimbursed  BOOLEAN DEFAULT FALSE
 user_id     INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 ```
 
