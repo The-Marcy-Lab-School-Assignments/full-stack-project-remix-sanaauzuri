@@ -1,29 +1,30 @@
-import { updateTodo, deleteTodo } from '../adapters/todo-adapters';
+import { updateExpense, deleteExpense } from '../adapters/expense-adapters';
 
-function TodoItem({ todo, loadTodos }) {
+function ExpenseItem({ expense, loadExpenses }) {
   const handleChange = async (e) => {
-    const { error } = await updateTodo(todo.todo_id, { is_complete: e.target.checked });
+    const { error } = await updateExpense(expense.expense_id, { is_reimbursed: e.target.value === 'true' });
     if (error) return console.error(error);
-    loadTodos();
+    loadExpenses();
   };
 
   const handleDelete = async () => {
-    const { error } = await deleteTodo(todo.todo_id);
+    const { error } = await deleteExpense(expense.expense_id);
     if (error) return console.error(error);
-    loadTodos();
+    loadExpenses();
   };
 
   return (
-    <li className="todo-item">
-      <input
-        type="checkbox"
-        checked={todo.is_complete}
-        onChange={handleChange}
-      />
-      <span className={todo.is_complete ? 'completed' : ''}>{todo.title}</span>
+    <li className="expense-item">
+      <span>{expense.description}</span>
+      <span>{expense.amount}</span>
+      <span>{expense.date}</span>
+      <select value={expense.is_reimbursed} onChange={handleChange}>
+        <option value="false">Pending</option>
+        <option value="true">Reimbursed</option>
+      </select>
       <button className="delete-btn" onClick={handleDelete}>Delete</button>
     </li>
   );
 }
 
-export default TodoItem;
+export default ExpenseItem;
