@@ -1,4 +1,4 @@
-import TodoItem from './TodoItem';
+import TodoItem from './ExpenseItem';
 
 function TodoList({ todos, loadTodos }) {
   return (
