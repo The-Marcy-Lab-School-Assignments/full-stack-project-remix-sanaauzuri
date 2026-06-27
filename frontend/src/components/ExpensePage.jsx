@@ -8,10 +8,10 @@ function ExpensePage({ currentUser, handleLogout }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // This helper fetches todos on page load with useEffect
-  // It is also used within the AddTodoForm and TodoList
-  // to re-fetch the todos when a mutation action is performed
-  // such as creating, deleting, or updating a todo.
+  // This helper fetches expenses on page load with useEffect
+  // It is also used within the AddExpenseForm and ExpenseList
+  // to re-fetch the expenses when a mutation action is performed
+  // such as creating, deleting, or updating a expense.
   const loadExpenses = async () => {
     setIsLoading(true);
     setError(null);
