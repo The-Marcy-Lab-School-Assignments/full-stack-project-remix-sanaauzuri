@@ -37,10 +37,10 @@ app.delete('/api/auth/logout', authControllers.logout);
 // Todo routes (all require authentication)
 // ====================================
 
-app.get('/api/todos', checkAuthentication, todoControllers.listTodos);
-app.post('/api/todos', checkAuthentication, todoControllers.createTodo);
-app.patch('/api/todos/:todo_id', checkAuthentication, todoControllers.updateTodo);
-app.delete('/api/todos/:todo_id', checkAuthentication, todoControllers.deleteTodo);
+app.get('/api/expenses', checkAuthentication, expenseControllers.listExpenses);
+app.post('/api/expenses', checkAuthentication, expenseControllers.createExpense);
+app.patch('/api/expenses/:expense_id', checkAuthentication, expenseControllers.updateExpense);
+app.delete('/api/expenses/:expense_id', checkAuthentication, expenseControllers.deleteExpense);
 
 // ====================================
 // Global Error Handler
