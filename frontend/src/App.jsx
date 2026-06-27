@@ -40,7 +40,7 @@ function App() {
     <main>
       <h1>Boomerang</h1>
       {currentUser
-        ? <TodoPage currentUser={currentUser} handleLogout={handleLogout} />
+        ? <ExpensePage currentUser={currentUser} handleLogout={handleLogout} />
         : <AuthPage handleLogin={handleLogin} handleRegister={handleRegister} />
       }
     </main>

@@ -16,8 +16,8 @@ function ExpenseItem({ expense, loadExpenses }) {
   return (
     <li className="expense-item">
       <span>{expense.description}</span>
-      <span>{expense.amount}</span>
-      <span>{expense.date}</span>
+      <span>${expense.amount}</span>
+      <span>{new Date(expense.date).toLocaleDateString()}</span>
       <select value={expense.is_reimbursed} onChange={handleChange}>
         <option value="false">Pending</option>
         <option value="true">Reimbursed</option>

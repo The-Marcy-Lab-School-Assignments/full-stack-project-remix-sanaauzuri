@@ -1,6 +1,6 @@
 import { createExpense } from '../adapters/expense-adapters';
 
-function AddExpenseForm({ loadExpenses }) {
+function AddExpenseForm({ loadExpenses, setShowForm }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,15 +14,17 @@ function AddExpenseForm({ loadExpenses }) {
 
     await loadExpenses();
     form.reset();
+    setShowForm(false)
   };
 
   return (
     <form id="add-expense-form" onSubmit={handleSubmit}>
       <label htmlFor="description-input">Log an expense</label>
       <input type="text" name="description" id="description-input" placeholder="What is this expense for?" />
-      <input type="number" name="amount" id="amount-input" placeholder="0.00" />
+      <input type="number" step="0.01" name="amount" id="amount-input" placeholder="0.00" />
       <input type="date" name="date" id="date-input" placeholder=""/>
-      <button type="submit">Add</button>
+      <button type="submit">Log</button>
+      <button type="button" onClick={() => setShowForm(false)}>Cancel</button>
     </form>
   );
 }
