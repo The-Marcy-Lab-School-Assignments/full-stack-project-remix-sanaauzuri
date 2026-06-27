@@ -18,7 +18,7 @@ const seed = async () => {
 
   await pool.query(`
     CREATE TABLE expenses (
-      todo_id       SERIAL PRIMARY KEY,
+      expense_id       SERIAL PRIMARY KEY,
       description   TEXT NOT NULL,
       amount        NUMERIC NOT NULL,
       date          DATE NOT NULL,

@@ -16,7 +16,7 @@ module.exports.find = async (expense_id) => {
 
 // Creates a new todo. Returns the full todo row.
 module.exports.create = async (description, amount, date, user_id) => {
-  const query = 'INSERT INTO todos (description, amount, date, user_id) VALUES ($1, $2) RETURNING *';
+  const query = 'INSERT INTO expenses (description, amount, date, user_id) VALUES ($1, $2, $3, $4) RETURNING *';
   const { rows } = await pool.query(query, [description, amount, date, user_id]);
   return rows[0];
 };

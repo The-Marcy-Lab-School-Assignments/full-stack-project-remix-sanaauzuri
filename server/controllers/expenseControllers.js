@@ -25,7 +25,7 @@ module.exports.updateExpense = async (req, res, next) => {
     const { expense_id } = req.params;
     const expense = await expenseModel.find(expense_id);
     if (!expense) return res.status(404).send({ error: 'Expense not found.' });
-    if (todo.user_id !== req.session.user_id) {
+    if (expense.user_id !== req.session.user_id) {
       return res.status(403).send({ error: 'Not authorized.' });
     }
     const updatedExpense = await expenseModel.update(expense_id, req.body);

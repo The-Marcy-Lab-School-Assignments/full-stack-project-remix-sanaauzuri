@@ -6,7 +6,7 @@ require('dotenv').config();
 const logRoutes = require('./middleware/logRoutes');
 const checkAuthentication = require('./middleware/checkAuthentication');
 const authControllers = require('./controllers/authControllers');
-const todoControllers = require('./controllers/todoControllers');
+const todoControllers = require('./controllers/expenseControllers');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -34,7 +34,7 @@ app.get('/api/auth/me', authControllers.getMe);
 app.delete('/api/auth/logout', authControllers.logout);
 
 // ====================================
-// Todo routes (all require authentication)
+// Expense routes (all require authentication)
 // ====================================
 
 app.get('/api/expenses', checkAuthentication, expenseControllers.listExpenses);
