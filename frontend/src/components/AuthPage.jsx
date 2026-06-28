@@ -18,14 +18,14 @@ function LoginForm({ handleLogin }) {
       <h2>Log In</h2>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
@@ -54,14 +54,14 @@ function RegisterForm({ handleRegister }) {
       <h2>Register</h2>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
@@ -74,10 +74,13 @@ function RegisterForm({ handleRegister }) {
 
 function AuthPage({ handleLogin, handleRegister }) {
   return (
+    <>
+    <h1>Boomerang</h1>
     <div id="auth-section">
-      <LoginForm handleLogin={handleLogin} />
-      <RegisterForm handleRegister={handleRegister} />
+        <LoginForm handleLogin={handleLogin} />
+        <RegisterForm handleRegister={handleRegister} />
     </div>
+    </>
   );
 }
 

@@ -38,7 +38,6 @@ function App() {
 
   return (
     <main>
-      <h1>Boomerang</h1>
       {currentUser
         ? <ExpensePage currentUser={currentUser} handleLogout={handleLogout} />
         : <AuthPage handleLogin={handleLogin} handleRegister={handleRegister} />

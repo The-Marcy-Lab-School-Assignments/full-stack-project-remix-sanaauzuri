@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  background: #f5f5f5;
-  color: #1a1a1a;
+  font-family: 'Figtree', system-ui, sans-serif;
+  background: white;
+  color: black;
 }
 
 main {
@@ -17,29 +17,29 @@ main {
 }
 
 h1 {
-  font-size: 1.75rem;
+  font-size: 2.7rem;
   margin-bottom: 1.5rem;
-  color: #1d4ed8;
+  color: black;
 }
 
 /* Auth forms */
 #auth-section {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 form {
   background: white;
-  padding: 1.5rem;
+  padding: 1.8rem;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 2px solid black;
   flex: 1;
 }
 
 form h2 {
   margin-bottom: 1rem;
   font-size: 1.1rem;
-  color: #374151;
+  color: black;
 }
 
 form input {
@@ -47,19 +47,21 @@ form input {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 2px solid black;
   border-radius: 4px;
   font-size: 0.95rem;
 }
 
 form button[type='submit'] {
-  background: #1d4ed8;
+  background: black;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.95rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: bold;
 }
 
 .error {
@@ -68,118 +70,269 @@ form button[type='submit'] {
   margin-bottom: 0.5rem;
 }
 
-/* Logged-in view */
-section {
+/* Expense Page */
+
+#expense-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-#user-controls {
+#page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
 }
 
-#user-controls button {
-  background: #dc2626;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-/* Add todo form */
-#add-todo-form {
-  display: flex;
-  gap: 0.5rem;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  flex-direction: column;
-}
-
-#add-todo-form label {
-  font-size: 0.9rem;
-  color: #374151;
-  display: none;
-}
-
-#add-todo-form input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 0.95rem;
+#greeting h1 {
+  font-size: 2.7rem;
   margin-bottom: 0;
 }
 
-#add-todo-form button {
-  background: #1d4ed8;
+/* Header buttons */
+
+#header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#log-btn {
+  background: black;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.95rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: bold;
 }
 
-/* Todo list */
-#todo-list {
+#logout-btn {
+  background: white;
+  color: black;
+  border: 2px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: bold;
+}
+
+/* Panel + amount cards */
+
+#panel {
+  display: flex;
+  gap: 1rem;
+}
+
+.panel-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.2rem;
+  background: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Figtree', system-ui, sans-serif;
+}
+
+.panel-card.active {
+  background: black;
+  color: white;
+}
+
+.card-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-amount {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* List section */
+
+#list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#list-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Expense List + Items */
+
+#expense-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.todo-item {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
+.expense-item {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  background: white;
 }
 
-.todo-item input[type='checkbox'] {
-  width: 1rem;
-  height: 1rem;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.todo-item span {
+.item-desc {
   flex: 1;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.todo-item span.completed {
-  text-decoration: line-through;
-  color: #9ca3af;
+.item-amount {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.item-date {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* Toggle + Delete Buttons */
+
+.toggle-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.toggle-btn.pending {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.toggle-btn.reimbursed {
+  background: white;
+  color: black;
+  border: 2px solid black;
 }
 
 .delete-btn {
-  background: #dc2626;
-  color: white;
+  background: none;
+  color: black;
   border: none;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 1rem;
+  padding: 0.25rem;
   flex-shrink: 0;
 }
 
-@media (min-width: 480px) {
-  #add-todo-form {
-    flex-direction: row;
-    align-items: flex-end;
-  }
+/* Modal + Form */
+
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#log-expense-form {
+  background: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 1.8rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+#form-header span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#form-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: black;
+}
+
+#log-expense-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+#log-expense-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+}
+
+#log-expense-form button[type='submit'] {
+  background: black;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: 'Figtree', system-ui, sans-serif;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Loading & err States */
+
+.error {
+  font-size: 0.85rem;
+  color: #dc2626;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #555;
 }
