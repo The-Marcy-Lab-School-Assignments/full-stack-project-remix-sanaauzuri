@@ -86,8 +86,8 @@ function ExpensePage({ currentUser, handleLogout }) {
       : 'All';
   
   
-  const animatedPending = useCountUp(pendingTotal);
-  const animatedReimbursed = useCountUp(reimbursedTotal);
+  const animatedPending = useCountUp(pendingTotal, 1800);
+  const animatedReimbursed = useCountUp(reimbursedTotal, 1800);
 
 
   return (
