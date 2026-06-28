@@ -170,6 +170,8 @@ form button[type='submit'] {
   cursor: pointer;
   text-align: left;
   font-family: 'Figtree', system-ui, sans-serif;
+  transition: background 0.2s ease, color 0.2s ease;
+
 }
 
 .panel-card.active {
