@@ -12,7 +12,7 @@ module.exports.listExpenses = async (req, res, next) => {
 module.exports.createExpense = async (req, res, next) => {
   try {
     const { description, amount, date } = req.body;
-    if (!description) return res.status(400).send({ error: 'Description is required.' });
+    if (!description || !amount || !date) return res.status(400).send({ error: 'Fields are required.' });
     const expense = await expenseModel.create(description, amount, date, req.session.user_id);
     res.status(201).send(expense);
   } catch (err) {
