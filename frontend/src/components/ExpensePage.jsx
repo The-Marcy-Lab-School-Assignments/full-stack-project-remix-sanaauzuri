@@ -64,7 +64,9 @@ function ExpensePage({ currentUser, handleLogout }) {
     <section id="expense-page">
       <header id="page-header">
         <div id="greeting">
-          <h1>Hello {currentUser.username}!</h1>
+          <h1 style={{ '--steps': `Hello ${currentUser.username}!`.length }}>
+            Hello {currentUser.username}!
+          </h1>
         </div>
         <div id="header-controls">
           <button id="log-btn" onClick={handleSeeForm}>

@@ -28,6 +28,25 @@ h1 {
   gap: 2rem;
 }
 
+#auth-title { display: flex; }
+#auth-title .letter { display: inline-block; animation: scatter 2.4s ease-in-out forwards; }
+#auth-title .letter:nth-child(1){--tx:-60px;--ty:-40px;--r:-30deg;animation-delay:0s}
+#auth-title .letter:nth-child(2){--tx: 30px;--ty:-80px;--r: 15deg;animation-delay:.05s}
+#auth-title .letter:nth-child(3){--tx: 80px;--ty:-20px;--r:-20deg;animation-delay:.1s}
+#auth-title .letter:nth-child(4){--tx:-20px;--ty: 60px;--r: 25deg;animation-delay:.15s}
+#auth-title .letter:nth-child(5){--tx: 90px;--ty: 50px;--r:-15deg;animation-delay:.2s}
+#auth-title .letter:nth-child(6){--tx:-80px;--ty: 30px;--r: 20deg;animation-delay:.25s}
+#auth-title .letter:nth-child(7){--tx: 50px;--ty:-60px;--r:-25deg;animation-delay:.3s}
+#auth-title .letter:nth-child(8){--tx:-40px;--ty:-70px;--r: 10deg;animation-delay:.35s}
+#auth-title .letter:nth-child(9){--tx:100px;--ty: 20px;--r:-35deg;animation-delay:.4s}
+
+@keyframes scatter {
+  0%  { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  35% { transform: translate(var(--tx),var(--ty)) rotate(var(--r)); opacity: 0; }
+  65% { transform: translate(var(--tx),var(--ty)) rotate(var(--r)); opacity: 0; }
+  100%{ transform: translate(0,0) rotate(0deg); opacity: 1; }
+}
+
 form {
   background: white;
   padding: 1.8rem;
@@ -88,9 +107,17 @@ form button[type='submit'] {
 }
 
 #greeting h1 {
-  font-size: 2.7rem;
-  margin-bottom: 0;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid black;
+  width: 0;
+  /* width: fit-content; */
+  animation: type 1.8s steps(var(--steps), end) forwards, blink 0.6s step-end infinite;
 }
+
+@keyframes type  { to { width: 100% } }
+@keyframes blink { 50% { border-color: transparent } }
 
 /* Header buttons */
 
@@ -150,6 +177,14 @@ form button[type='submit'] {
   color: white;
 }
 
+.panel-card:first-child .card-amount {
+  color: orange;
+}
+
+.panel-card:last-child .card-amount {
+  color: green;
+}
+
 .card-label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -200,6 +235,11 @@ form button[type='submit'] {
   border: 2px solid black;
   border-radius: 8px;
   background: white;
+  transition: transform 0.15s ease;
+}
+
+.expense-item:hover {
+  transform: translateY(-2px);
 }
 
 .item-desc {

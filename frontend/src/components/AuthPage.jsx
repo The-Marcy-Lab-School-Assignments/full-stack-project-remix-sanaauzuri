@@ -73,9 +73,15 @@ function RegisterForm({ handleRegister }) {
 }
 
 function AuthPage({ handleLogin, handleRegister }) {
+  const title = "Boomerang";
+
   return (
     <>
-    <h1>Boomerang</h1>
+    <h1 id="auth-title">
+      {title.split("").map((char, i) => (
+        <span className="letter" key={i}>{char}</span>
+      ))}
+    </h1>
     <div id="auth-section">
         <LoginForm handleLogin={handleLogin} />
         <RegisterForm handleRegister={handleRegister} />
