@@ -3,6 +3,31 @@ import { fetchAllExpenses } from '../adapters/expense-adapters';
 import AddExpenseForm from './AddExpenseForm';
 import ExpenseList from './ExpenseList';
 
+function useCountUp(target, duration = 1000) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const steps = 40;
+    const increment = target / steps;
+    const interval = duration / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setValue(target);
+        clearInterval(timer);
+      } else {
+        setValue(start);
+      }
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [target]);
+
+  return value;
+}
+
 function ExpensePage({ currentUser, handleLogout }) {
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -59,6 +84,11 @@ function ExpensePage({ currentUser, handleLogout }) {
       : filter === 'reimbursed'
       ? 'Reimbursed'
       : 'All';
+  
+  
+  const animatedPending = useCountUp(pendingTotal);
+  const animatedReimbursed = useCountUp(reimbursedTotal);
+
 
   return (
     <section id="expense-page">
@@ -91,7 +121,7 @@ function ExpensePage({ currentUser, handleLogout }) {
           onClick={handlePendingFilter}
         >
           <span className="card-label">Pending</span>
-          <span className="card-amount">{formatCurrency(pendingTotal)}</span>
+          <span className="card-amount">{formatCurrency(animatedPending)}</span>
         </button>
 
         <button
@@ -99,7 +129,7 @@ function ExpensePage({ currentUser, handleLogout }) {
           onClick={handleReimbursedFilter}
         >
           <span className="card-label">Reimbursed</span>
-          <span className="card-amount">{formatCurrency(reimbursedTotal)}</span>
+          <span className="card-amount">{formatCurrency(animatedReimbursed)}</span>
         </button>
       </div>
 
