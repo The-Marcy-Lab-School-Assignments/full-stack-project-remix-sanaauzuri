@@ -57,7 +57,7 @@ function RegisterForm({ handleRegister }) {
         placeholder="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        maxLength={15}
+        maxLength={7}
         required
       />
       <input

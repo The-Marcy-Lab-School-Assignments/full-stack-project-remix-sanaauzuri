@@ -7,8 +7,8 @@ module.exports.register = async (req, res, next) => {
       return res.status(400).send({ error: 'Username and password are required.' });
     }
 
-    if (username.length > 15) {
-      return res.status(400).send({ error: 'Username must be 15 characters or fewer.' });
+    if (username.length > 7) {
+      return res.status(400).send({ error: 'Username must be 7 characters or fewer.' });
     }
 
     const existingUser = await userModel.findByUsername(username);
